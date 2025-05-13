@@ -6,10 +6,6 @@
 
 ## 🚀 Features
 
-- 🔁 **Real-time or On-Demand Syncing**
-- 🔐 **End-to-End Encrypted Transfers**
-- 🧩 **Pure P2P Architecture (No Central Server)**
-- ⚡ **Lightweight and Efficient**
 
 ---
 
