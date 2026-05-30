@@ -1,0 +1,31 @@
+name: syncli-exp01
+
+networks:
+  expnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.1.0/24
+
+services:
+  nodeA:
+    image: syncli-experiments-node
+    hostname: nodeA
+    networks: [expnet]
+    volumes:
+      - ./results/sync_A:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/nodeA.jsonl
+    command: ["--group", "exp01", "--dir", "/sync", "--auto-join", "--peer", "nodeB:9001"]
+
+  nodeB:
+    image: syncli-experiments-node
+    hostname: nodeB
+    networks: [expnet]
+    volumes:
+      - ./results/sync_B:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/nodeB.jsonl
+    command: ["--group", "exp01", "--dir", "/sync", "--auto-join", "--peer", "nodeA:9001"]

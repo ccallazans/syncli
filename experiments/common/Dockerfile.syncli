@@ -1,0 +1,15 @@
+# Build Syncli para os experimentos.
+# Contexto de build: raiz do repositório (../../ a partir de cada experimento).
+# Adiciona bash e coreutils ao Alpine para scripts de experimento rodarem dentro do container.
+
+FROM golang:1.24-alpine AS builder
+WORKDIR /src
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 go build -o /syncli ./cmd/syncli
+
+FROM alpine:3.19
+RUN apk add --no-cache iproute2 bash coreutils
+COPY --from=builder /syncli /usr/local/bin/syncli
+ENTRYPOINT ["syncli"]

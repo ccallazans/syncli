@@ -1,0 +1,116 @@
+name: syncli-exp08
+
+networks:
+  expnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.8.0/24
+
+services:
+  nodeA:
+    image: syncli-experiments-node
+    hostname: nodeA
+    networks: [expnet]
+    volumes:
+      - ./results/sync_A:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/nodeA.jsonl
+    command:
+      - "--group"
+      - "exp08"
+      - "--dir"
+      - "/sync"
+      - "--auto-join"
+      - "--peer"
+      - "node1:9001"
+      - "--peer"
+      - "node2:9001"
+      - "--peer"
+      - "node3:9001"
+      - "--peer"
+      - "node4:9001"
+      - "--peer"
+      - "node5:9001"
+      - "--peer"
+      - "node6:9001"
+      - "--peer"
+      - "node7:9001"
+
+  node1:
+    image: syncli-experiments-node
+    hostname: node1
+    networks: [expnet]
+    volumes:
+      - ./results/sync_1:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/node1.jsonl
+    command: ["--group", "exp08", "--dir", "/sync", "--auto-join", "--peer", "nodeA:9001"]
+
+  node2:
+    image: syncli-experiments-node
+    hostname: node2
+    networks: [expnet]
+    volumes:
+      - ./results/sync_2:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/node2.jsonl
+    command: ["--group", "exp08", "--dir", "/sync", "--auto-join", "--peer", "nodeA:9001"]
+
+  node3:
+    image: syncli-experiments-node
+    hostname: node3
+    networks: [expnet]
+    volumes:
+      - ./results/sync_3:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/node3.jsonl
+    command: ["--group", "exp08", "--dir", "/sync", "--auto-join", "--peer", "nodeA:9001"]
+
+  node4:
+    image: syncli-experiments-node
+    hostname: node4
+    networks: [expnet]
+    volumes:
+      - ./results/sync_4:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/node4.jsonl
+    command: ["--group", "exp08", "--dir", "/sync", "--auto-join", "--peer", "nodeA:9001"]
+
+  node5:
+    image: syncli-experiments-node
+    hostname: node5
+    networks: [expnet]
+    volumes:
+      - ./results/sync_5:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/node5.jsonl
+    command: ["--group", "exp08", "--dir", "/sync", "--auto-join", "--peer", "nodeA:9001"]
+
+  node6:
+    image: syncli-experiments-node
+    hostname: node6
+    networks: [expnet]
+    volumes:
+      - ./results/sync_6:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/node6.jsonl
+    command: ["--group", "exp08", "--dir", "/sync", "--auto-join", "--peer", "nodeA:9001"]
+
+  node7:
+    image: syncli-experiments-node
+    hostname: node7
+    networks: [expnet]
+    volumes:
+      - ./results/sync_7:/sync
+      - ./results:/results
+    environment:
+      SYNCLI_EXP_LOG: /results/node7.jsonl
+    command: ["--group", "exp08", "--dir", "/sync", "--auto-join", "--peer", "nodeA:9001"]
