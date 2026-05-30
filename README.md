@@ -1,4 +1,4 @@
-# syncli
+# Syncli
 
 `syncli` é uma ferramenta de linha de comando, escrita em Go, para sincronizar
 um diretório entre máquinas na **mesma rede local**.
