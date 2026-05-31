@@ -30,8 +30,8 @@ pronto para produção.
 
 ### Limitações (sem rodeios)
 
-- Funciona apenas em **rede local** e sobre **IPv4**.
-- A comunicação **não é criptografada** — use somente em redes confiáveis.
+- Funciona apenas em **rede local**.
+- A comunicação **não é criptografada**. Use somente em redes confiáveis.
 - A resolução de conflitos é **last-write-wins** (a última escrita vence).
 
 ## Requisitos
