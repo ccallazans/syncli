@@ -28,12 +28,6 @@ pronto para produção.
   existe, o nó pede um *snapshot* completo a um peer para começar com uma cópia
   íntegra dos arquivos.
 
-### Limitações (sem rodeios)
-
-- Funciona apenas em **rede local**.
-- A comunicação **não é criptografada**. Use somente em redes confiáveis.
-- A resolução de conflitos é **last-write-wins** (a última escrita vence).
-
 ## Requisitos
 
 - Go 1.24+ (para compilar)
